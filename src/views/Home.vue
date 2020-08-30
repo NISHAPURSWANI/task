@@ -7,7 +7,11 @@
     <div v-if="!$v.fullname.required" class="invalid-feedback"> The name field is required</div>
   </div>
  <div v-show="q2">
-   feeee
+   <div class="col-12 form-group" v-show="q1">
+  <label class="col-form-label col-form-label-lg">last Name <span class="text-danger">*</span></label>  
+ 
+    <div v-if="!$v.lastname.required" class="invalid-feedback"> The name field is required</div>
+  </div>
  </div>
   </div>
     <div class="col-12 form-group text-center">
@@ -34,6 +38,8 @@ export default{
   },
   validations:{
       fullname:{required},
+      lastname:{required},
+
      /* email:{required,email},
       country:{required},
       password:{required , minLength:minLength(6), maxLength:maxLength(18)}*/
