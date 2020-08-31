@@ -1,22 +1,95 @@
 <template>
-<form id="signup-form" v-on:submit.prevent="submit">
-<div class="row">
-  <div class="col-12 form-group" v-show="q1">
-  <label class="col-form-label col-form-label-lg">Full Name <span class="text-danger">*</span></label>  
- 
+<form id="jq-form" v-on:submit.prevent="submit" class="myform">
+  <div  v-show="q1">
+  <label >Enter your Name <span class="text-danger">*</span></label>  
+  <input type="text" v-model.trim="$v.fullname.$model" :class="{'is-invalid':validationStatus($v.fullname)}" class="form-control form-control-lg" @keyup.enter=" q2=true , q1=false,q3=false">
     <div v-if="!$v.fullname.required" class="invalid-feedback"> The name field is required</div>
   </div>
- <div v-show="q2">
-   <div class="col-12 form-group" v-show="q1">
-  <label class="col-form-label col-form-label-lg">last Name <span class="text-danger">*</span></label>  
- 
-    <div v-if="!$v.lastname.required" class="invalid-feedback"> The name field is required</div>
+  <br>
+  
+<div v-show="q2"     >
+    Q2. What's your favorite color?
+    
+    <select v-model="selected"  >
+      <option disabled value=""></option>
+
+  <option  value="red" style="color:red;">Red</option>
+  <option value="blue" style="color:blue;" >Blue</option>
+  <option value="green" style="color:green;" >Green</option>
+  <option value="yellow" style="color:yellow;" >Yellow</option>
+   <option value="orange" style="color:orange;" >Orange</option>
+  <option value="black"   style="color:black;" >Black</option>
+  <option value="gold"    style="color:gold;" >Gold</option>
+  <option value="purple"   style="color:purple;" >Purple</option>
+   <option value="cyan"   style="color:cyan;" >Cyan</option>
+  <option value="maroon"   style="color:maroon;" >Maroon</option>
+  <option value="gray"   style="color:gray;" >Gray</option>
+  <option value="brown"   style="color:brown;" >Brown</option>
+   <option value="darkgreen"   style="color:darkgreen;" >Dark Green</option>
+  <option value="olive"   style="color:olive;" >Olive</option>
+  <option value="magenta"   style="color:magenta;">Magenta</option>
+  <option value="indigo"   style="color:indigo" >Indigo</option>
+      </select ><br>
+  <button @click="q3=true,q2=false"> to question 3</button>
+
+   </div>
+
+
+  <br>
+  
+
+  <div v-show="q3" >
+    Q3. Do you have a pet? 
+    <input type="radio" id="yes" value="yes" v-model="ticked" @keyup.enter="q4=true , q3=false"><label for="yes"  >Yes</label>
+    <input type="radio" id="no" value="no" v-model="ticked" @keyup.enter="q5=true , q3=false"><label for="no">No</label>
   </div>
- </div>
+<br>
+  <div  v-show="q4">
+  <label >Enter your pet's Name <span class="text-danger">*</span></label>  
+  <input type="text" v-model.trim="$v.petname.$model" :class="{'is-invalid':validationStatus($v.petname)}" class="form-control form-control-lg" @keyup.enter=" q7=true , q4=false,q3=false">
+
+    <div v-if="!$v.petname.required" class="invalid-feedback"> The name field is required</div>
   </div>
-    <div class="col-12 form-group text-center">
-     <button class="btn btn-vue btn-lg col-4">Sign up</button>
-</div>
+  <br>
+  <div v-show="q5" @keyup.enter="q6=true , q5=false,q3=false">
+    Q4. What are your Favorite Sports:
+    <input type="checkbox" id="cricket" value="cricket" v-model="checkedNames">
+    <label for="cricket">Cricket</label>
+    <input type="checkbox" id="football" value="football" v-model="checkedNames">
+    <label for="football">Football</label>
+    <input type="checkbox" id="badminton" value="badminton" v-model="checkedNames">
+    <label for="badminton">Badminton</label>
+   <input type="checkbox" id="tennis" value="tennis" v-model="checkedNames">
+    <label for="tennis">Tennis</label>
+    <input type="checkbox" id="baseball" value="baseball" v-model="checkedNames">
+    <label for="baseball">BaseBall</label>
+
+
+<br></div>
+   <div v-show="q6">
+          <img alt="Vue logo" src="../assets/thankyou.png" /><br>
+
+           <span>MY name is {{fullname}}</span><br>
+          <span>My favorite color is {{selected}}</span><br>
+          <span>No, I don't have a pet</span><br>
+          <span>My  favorite sports are: {{ checkedNames }}</span><br>
+          
+
+     </div>
+      <div v-show="q7">
+          <img alt="Vue logo" src="../assets/thankyou.png" /><br>
+
+           <span>MY name is {{fullname}}</span><br>
+           <span>My favorite color is {{selected}}</span><br>
+           <span>Yes, I have a pet</span><br>
+
+          <!--<span>My  favorite sports are: {{ checkedNames }}</span><br>-->
+          <span>My pet's name is : {{ petname }}</span><br>
+
+     </div>
+
+
+
 </form>
   
 </template>
@@ -24,39 +97,45 @@
 import { required } from 'vuelidate/lib/validators'
 
 export default{
-  name:'SignupForm',
+  name:'jqForm',
   data:function(){
     return{
       fullname:'',
-     /* email:'',
-      country:'',
-      password:'',
-      countryList:[]*/
+      petname:'',
+      ticked:'',
+      checkedNames:[],
+      color:'',
+      colorList:[],
+      selected:'',
       q1:true,
-      q2:false
+      q2:false,
+      q3:false,
+      q4:false,
+      q5:false,
+      q6:false,
+      q7:false
     }
   },
   validations:{
       fullname:{required},
-      lastname:{required},
-
-     /* email:{required,email},
-      country:{required},
-      password:{required , minLength:minLength(6), maxLength:maxLength(18)}*/
+      petname:{required},
+      color:{required}
+    
 
   },
-/*  mounted:function(){
+  mounted:function(){
       var v=this;
-      v.$http.get('http://localhost:4600/countries')
+      v.$http.get('http://localhost:4700/colors')
       .then(function(resp){
-          v.countryList=resp.data;
+          v.colorList=resp.data;
 
       })
       .catch(function(err){
           console.log(err)
 
       })
-  },*/
+  },
+  
   methods:{
       validationStatus:function(validation){
           return typeof validation !="undefined"?validation.$error:false;
@@ -65,16 +144,9 @@ export default{
 
           this.$v.$touch();
           if(this.$v.$pendding || this.$v.$error) return;
-          //alert("done");
+          alert("done");
 
       }
   }
 }
 </script>
-<style>
-.btn-vue{
-  background-color: #53b985;
-  color:#31485D;
-  font-weight: bold;
-}
-</style>
