@@ -21,13 +21,12 @@
 ;
   //margin-left: 50px;
   vertical-align: middle;
-  height: 750px;
+  height: 700px;
 }
 
 #nav {
-  padding: 0px;
-  justify-content: center;
-
+  margin-left:-400px;
+  }
   a {
     font-weight: bold;
     color: #2c3e50;
@@ -36,5 +35,5 @@
       color: #42b983;
     }
   }
-}
+
 </style>

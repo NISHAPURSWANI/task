@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "json": "json-server src/data.js -p 4700",
+    "json": "json-server src/data.js -p 4707",
     "serve": "vue-cli-service serve",
     "start": "npm-run-all -p serve json",
     "build": "vue-cli-service build",

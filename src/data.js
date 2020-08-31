@@ -1,6 +1,28 @@
 module.exports = function() {
     return {
         colors: [
+            {"iso" : "black", "colors" : "Black"},
+            {"iso" : "blue", "colors" : "Blue"},
+            {"iso" : "gold", "colors" : "Gold"},
+            {"iso" : "yellow", "colors" : "Yellow"},
+            {"iso" : "red", "colors" : "Red"},
+            {"iso" : "orange", "colors" : "Orange"},
+            {"iso" : "pink", "colors" : "Pink"},
+            {"iso" : "green", "colors" : "Green"},
+            {"iso" : "dark-green", "colors" : "Dark-green"},
+            {"iso" : "indigo", "colors" : "Indigo"},
+            {"iso" : "violet", "colors" : "Violet"},
+            {"iso" : "magenta", "colors" : "Magenta"},
+            {"iso" : "cyan", "colors" : "Cyan"},
+            {"iso" : "neon", "colors" : "Neon"},
+            {"iso" : "aliceblue", "colors" : "Alice-blue"},
+
+        ]
+    }
+}
+/*module.exports = function() {
+    return {
+        countries: [
             {"iso" : "black", "country" : "Black"},
             {"iso" : "blue", "country" : "Blue"},
             {"iso" : "gold", "country" : "Gold"},
@@ -19,4 +41,4 @@ module.exports = function() {
 
         ]
     }
-}
+}*/
