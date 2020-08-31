@@ -19,7 +19,7 @@
     </div>
     <br />
 
-    <div v-show="question_2" class="myform">
+    <div v-show="question_2" class="myform" >
         <div class="col-12 form-group">
   <label class="col-form-label col-form-label-lg"><b>Enter your favorite color?</b> <span class="text-danger">*</span></label>
 <select v-model="$v.colors.$model" :class="{'is-invalid':validationStatus($v.colors)}" class="form-control form-control-lg">
@@ -192,11 +192,8 @@ export default {
   font-family: 'Arvo';
   font-size: 18px;
   height: 30px;
-  /*left: 10%;*/
-  /*margin: -25px 0 0 -100px;*/
   padding: 10px 0px;
-  /*position: relative;*/
- /* top: 0%;*/
+
   width: 350px;
 }
 .myans {
