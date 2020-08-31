@@ -92,7 +92,7 @@ press enter for next question
       <br />
     </div>
     <div v-show="question_7" class="myans">
-      <img alt="Vue logo" src="../assets/thankyou.png" />
+      <img alt="Vue logo" src="../assets/thankyou.png" style="width:300px;height:300px;" />
       <br />
 
       <span>MY name is {{fullname}}</span>
