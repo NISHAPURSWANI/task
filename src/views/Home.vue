@@ -80,7 +80,6 @@
            <span style="color:val">My favorite color is {{selected}}</span><br>
            <span>Yes, I have a pet</span><br>
 
-          <!--<span>My  favorite sports are: {{ checkedNames }}</span><br>-->
           <span>My pet's name is : {{ petname }}</span><br>
 
      </div>
@@ -110,7 +109,6 @@ export default{
       q5:false,
       q6:false,
       q7:false
-      //#q2(hide)
     }
   },
   validations:{
@@ -149,7 +147,7 @@ export default{
 
        },
        somec(){
-             
+            
          this.q3=true,
          this.q2=false
        },
