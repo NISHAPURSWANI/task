@@ -19,17 +19,19 @@
     </div>
     <br />
 
-    <div v-show="question_2" class="myform" >
+    <div v-show="question_2" class="myform"  @keypress="somec">
         <div class="col-12 form-group">
   <label class="col-form-label col-form-label-lg"><b>Enter your favorite color?</b> <span class="text-danger">*</span></label>
 <select v-model="$v.colors.$model" :class="{'is-invalid':validationStatus($v.colors)}" class="form-control form-control-lg">
 <option value="">Select Color</option>
 <option :value="c.iso" :key="c.iso" v-for="c in colorsList">{{c.colors}}</option>
 </select>
+      <br >press enter for next question
+
       
 
       </div>
-          <button @click="somec()">to question 3</button>
+         <!-- <button @click="somec()">to question 3</button>-->
     </div>
 
     <br />
@@ -37,8 +39,8 @@
     <div v-show="question_3" class="myform">
       <b>Q3. Do you have a pet?</b>
       <br >
-      <input type="radio" id="yes" value="yes" v-model="ticked" @keyup.enter="somepy()" />
-      <label for="yes">Yes</label>
+     <button style="background-color:dark-gray;" ><input type="radio" id="yes" value="yes" v-model="ticked" @keyup.enter="somepy()" />
+      <label for="yes">Yes</label></button>
       <input type="radio" id="no" value="no" v-model="ticked" @keyup.enter="somepn()" />
       <label for="no">No</label>
       <br />press enter for next question
@@ -64,8 +66,8 @@
     <div v-show="question_5" @keyup.enter="somes()" class="myform">
       <b>Q4. What are your Favorite Sports:</b>
       <br >
-      <input type="checkbox" id="cricket" value="cricket" v-model="checkedNames" />
-      <label for="cricket">Cricket</label>
+      <b-button  ><input type="checkbox" id="cricket" value="cricket" v-model="checkedNames" />
+      <label for="cricket">Cricket</label></b-button>
       <input type="checkbox" id="football" value="football" v-model="checkedNames" />
       <label for="football">Football</label>
       <input type="checkbox" id="badminton" value="badminton" v-model="checkedNames" />
@@ -84,7 +86,7 @@ press enter for next question
 
       <span>MY name is {{fullname}}</span>
       <br />
-      <span>My favorite color is {{colors}}</span>
+      <span class="opcolor">My favorite color is {{colors}}</span>
       <br />
       <span>No, I don't have a pet</span>
       <br />
@@ -139,13 +141,20 @@ export default {
       .catch(function(err) {
         console.log(err);
       });
+      {
+        let style = document.createElement('link');
+        style.type = "text/css";
+        style.rel = "stylesheet";
+        style.href = '/assets/styles/vendor.css';
+        document.head.appendChild(style);
+    };
   },
   validations: {
     fullname: { required },
     petname: { required },
     colors: { required }
   },
-  
+
   
 
   methods: {
@@ -178,10 +187,14 @@ export default {
   }
 };
 </script>
+
 <style>
 .myform {
   margin-top: 100px;
   margin-left: -400px;
+  font-family: 'Arvo';
+
+  font-size: 18px;
 }
 .input{
   background-color: transparent;
@@ -198,7 +211,9 @@ export default {
 }
 .myans {
   margin-top: 50px;
-  margin-left: -400px;
+  margin-left: -350px;
 }
+
+
 
 </style>
