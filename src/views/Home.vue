@@ -39,8 +39,8 @@
     <div v-show="question_3" class="myform">
       <b>Q3. Do you have a pet?</b>
       <br >
-     <button style="background-color:dark-gray;" ><input type="radio" id="yes" value="yes" v-model="ticked" @keyup.enter="somepy()" />
-      <label for="yes">Yes</label></button>
+     <input type="radio" id="yes" value="yes" v-model="ticked" @keyup.enter="somepy()" />
+      <label for="yes">Yes</label>
       <input type="radio" id="no" value="no" v-model="ticked" @keyup.enter="somepn()" />
       <label for="no">No</label>
       <br />press enter for next question
