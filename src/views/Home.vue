@@ -31,7 +31,6 @@
       
 
       </div>
-         <!-- <button @click="somec()">to question 3</button>-->
     </div>
 
     <br />
@@ -141,13 +140,7 @@ export default {
       .catch(function(err) {
         console.log(err);
       });
-      {
-        let style = document.createElement('link');
-        style.type = "text/css";
-        style.rel = "stylesheet";
-        style.href = '/assets/styles/vendor.css';
-        document.head.appendChild(style);
-    };
+     
   },
   validations: {
     fullname: { required },
