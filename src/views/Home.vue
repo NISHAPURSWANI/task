@@ -19,12 +19,12 @@
     </div>
     <br />
 
-    <div v-show="question_2" class="myform"  @keypress="somec">
+   
+   <div v-show="question_2" class="myform"  @keypress="somec">
         <div class="col-12 form-group">
   <label class="col-form-label col-form-label-lg"><b>Enter your favorite color?</b> <span class="text-danger">*</span></label>
 <select v-model="$v.colors.$model" :class="{'is-invalid':validationStatus($v.colors)}" class="form-control form-control-lg">
-<option value="">Select Color</option>
-<option :value="c.iso" :key="c.iso" v-for="c in colorsList">{{c.colors}}</option>
+<option :value="c.name" :key="c.name" v-for="c in colorsList">{{c.colors}}</option>
 </select>
       <br >press enter for next question
 
@@ -32,8 +32,6 @@
 
       </div>
     </div>
-
-    <br />
 
     <div v-show="question_3" class="myform">
       <b>Q3. Do you have a pet?</b>
@@ -82,8 +80,8 @@ press enter for next question
     <div v-show="question_6" class="myans">
       <img alt="Vue logo" src="../assets/thankyou.png" style="width:300px;height:300px;" />
       <br />
-
-      <span>MY name is {{fullname}}</span>
+<br>
+      <span>My name is {{fullname}}</span>
       <br />
       <span class="opcolor">My favorite color is {{colors}}</span>
       <br />
@@ -95,8 +93,8 @@ press enter for next question
     <div v-show="question_7" class="myans">
       <img alt="Vue logo" src="../assets/thankyou.png" style="width:300px;height:300px;" />
       <br />
-
-      <span>MY name is {{fullname}}</span>
+<br>
+      <span>My name is {{fullname}}</span>
       <br />
       <span style="color:val">My favorite color is {{colors}}</span>
       <br />
@@ -110,6 +108,8 @@ press enter for next question
 </template>
 <script>
 import { required } from "vuelidate/lib/validators";
+let colors = require('../data')
+
 export default {
   name: "jqForm",
   data: function() {
@@ -118,8 +118,7 @@ export default {
       petname: "",
       ticked: "",
       checkedNames: [],
-      colors: '',
-      colorsList: [],
+      colorsList:colors,
       selected: "",
       question_1: true,
       question_2: false,
@@ -130,18 +129,7 @@ export default {
       question_7: false
     };
   },
-  mounted: function() {
-    var v = this;
-    v.$http
-      .get("http://localhost:4707/colors")
-      .then(function(resp) {
-        v.colorsList = resp.data;
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
-     
-  },
+  
   validations: {
     fullname: { required },
     petname: { required },
@@ -203,7 +191,7 @@ export default {
   width: 350px;
 }
 .myans {
-  margin-top: 50px;
+  margin-top: 10px;
   margin-left: -350px;
 }
 
